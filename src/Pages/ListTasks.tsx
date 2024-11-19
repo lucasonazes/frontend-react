@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import '../GlobalStyles.css';
 
-interface Employee {
+interface Task {
     id: number;
-    nome: string;
-    cpf: string;
+    title: string;
+    description: string;
+    createdAt: string;
+    dueDate: string;
+    finished: boolean;
 }
 
-export default function Cep() {
-    const [employees, setEmployees] = useState<Employee[]>([]);
+export default function ListTasks() {
+    const [employees, setEmployees] = useState<Task[]>([]);
     
     function searchEmployees() {
         fetch("http://localhost:5141/api/funcionario/listar")
@@ -22,7 +26,7 @@ export default function Cep() {
 
     return (
         <div className="container">
-            <h1>Listar funcionários</h1>
+            <h1>Listar Tarefas</h1>
 
             <button onClick={searchEmployees}>Listar</button>
 
@@ -37,7 +41,7 @@ export default function Cep() {
                     ))}
                 </ul>
             ) : (
-                <p>Nenhum funcionário encontrado.</p>
+                <p>Nenhuma tarefa encontrada.</p>
             )}
         </div>
     );
