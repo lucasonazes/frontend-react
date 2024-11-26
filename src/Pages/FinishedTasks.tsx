@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Tarefa from '../Models/Tarefa';
 
-const ListTasks: React.FC = () => {
+const FinishedTasks: React.FC = () => {
     const [tarefas, setTarefas] = useState<Tarefa[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/tarefas/listar')
+        fetch('http://localhost:5000/api/tarefas/concluidas')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro na requisição: ' + response.statusText);
@@ -47,4 +47,4 @@ const ListTasks: React.FC = () => {
     );
 };
 
-export default ListTasks;
+export default FinishedTasks;
